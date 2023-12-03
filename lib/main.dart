@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:games/config/config.dart';
 import 'package:games/presentation/providers/providers.dart';
@@ -12,6 +13,7 @@ class MyApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context,ref) {
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     final isDark = ref.watch(darkThemeProvider);
     return MaterialApp.router(
       routerConfig: appRouter,

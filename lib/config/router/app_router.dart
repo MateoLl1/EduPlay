@@ -7,6 +7,16 @@ final appRouter = GoRouter(
     GoRoute(
       path: '/',
       builder: (context, state) => const HomeScreen(),
-    )
+    ),
+
+    GoRoute(
+      path: '/comercio-exterior',
+      builder: (context, state) => const ComercioExteriorScreen(),
+    ),
+
+    GoRoute(
+      path: '/software',
+      builder: (context, state) => const SoftwareScreen(),
+    ),
   ]
 );

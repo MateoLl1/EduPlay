@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:games/config/config.dart';
 import 'package:games/presentation/providers/providers.dart';
 import 'package:games/presentation/widgets/widgets.dart';
 
@@ -13,7 +14,7 @@ class HomeScreen extends ConsumerWidget {
     final isDarkProvider = ref.watch(darkThemeProvider);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home Screen'),
+        title: const Center(child:Text('EducaPlay')),
         actions: [
           IconButton(
             icon: isDarkProvider
@@ -36,218 +37,52 @@ class _HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textStyle = Theme.of(context).textTheme;
-    final size = MediaQuery.of(context).size;
-    return  Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+    
+    return  const SizedBox(
+      width: double.infinity,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-    
-    
-          const SaludoView(),
-    
-          ClipRRect(
-            borderRadius: BorderRadius.circular(20),
-            child: Container(
-              width: double.infinity,
-              height: 180,
-              color: Colors.blueAccent,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  
-                  Text(
-                    'Desarrollo de\nsoftware',
-          
-                    style: textStyle.titleLarge
-                  ),
-          
-          
-                  Image.asset(
-                    'assets/img/software.png',
-                    height: size.width*0.3,
-                    fit: BoxFit.cover
-                  ),
-                ],
-              ),
-          
-            ),
-          ),
-          
-          const SizedBox(height: 20),
-
-          ClipRRect(
-            borderRadius: BorderRadius.circular(20),
-            child: Container(
-              width: double.infinity,
-              height: 180,
-              color: Colors.greenAccent,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  
-                  Text(
-                    'Comercio  \nexterior',
-          
-                    style: textStyle.titleLarge
-                  ),
-          
-          
-                  Image.asset(
-                    'assets/img/comercio.png',
-                    height: size.width*0.3,
-                    fit: BoxFit.cover
-                  ),
-                ],
-              ),
-          
-            ),
-          ),
-          
-          const SizedBox(height: 20),
-
-          ClipRRect(
-            borderRadius: BorderRadius.circular(20),
-            child: Container(
-              width: double.infinity,
-              height: 180,
-              color: Colors.purpleAccent,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  
-                  Text(
-                    'Desarrollo de\nsoftware',
-          
-                    style: textStyle.titleLarge
-                  ),
-          
-          
-                  Image.asset(
-                    'assets/img/software.png',
-                    height: size.width*0.3,
-                    fit: BoxFit.cover
-                  ),
-                ],
-              ),
-          
-            ),
-          ),
-          
-          const SizedBox(height: 20),
-
-
-          ClipRRect(
-            borderRadius: BorderRadius.circular(20),
-            child: Container(
-              width: double.infinity,
-              height: 180,
-              color: Colors.amberAccent,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  
-                  Text(
-                    'Desarrollo de\nsoftware',
-          
-                    style: textStyle.titleLarge
-                  ),
-          
-          
-                  Image.asset(
-                    'assets/img/software.png',
-                    height: size.width*0.3,
-                    fit: BoxFit.cover
-                  ),
-                ],
-              ),
-          
-            ),
-          ),
-          
-          const SizedBox(height: 20),
-
-
-          ClipRRect(
-            borderRadius: BorderRadius.circular(20),
-            child: Container(
-              width: double.infinity,
-              height: 180,
-              color: Colors.blueAccent,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  
-                  Text(
-                    'Desarrollo de\nsoftware',
-          
-                    style: textStyle.titleLarge
-                  ),
-          
-          
-                  Image.asset(
-                    'assets/img/software.png',
-                    height: size.width*0.3,
-                    fit: BoxFit.cover
-                  ),
-                ],
-              ),
-          
-            ),
-          ),
-          
-          const SizedBox(height: 20),
-    
-    
-    
-          
-    
-    
-
-
-
-
-    
-        ],
-      ),
-    );
-  }
-}
-
-class SaludoView extends StatelessWidget {
-  const SaludoView({
-    super.key,
-  });
-
-
-  @override
-  Widget build(BuildContext context) {
-    final textStyle = Theme.of(context).textTheme;
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 20),
-      child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
 
-          Text('Hola, Mateo',style: textStyle.titleLarge,),
+          IniciarSeccionSpan(),
 
-          const SizedBox(width: 20),
+          SizedBox(height: 20),
 
-          IconButton.filledTonal(
-            style: IconButton.styleFrom(
-              shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(10))
-              )
-            ),
-            icon: const Icon(Icons.person,size: 30),
-            onPressed: (){},
-          )
+          _CursosListView(),
+
         ],
       ),
     );
   }
 }
 
+class _CursosListView extends StatelessWidget {
+  const _CursosListView();
+
+  @override
+  Widget build(BuildContext context) {
+    final textStyle = Theme.of(context).textTheme;
+    return  Column(
+      children: [
+
+        Text('Nuestros cursos',style: textStyle.titleLarge),
+
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          child: Divider(),
+        ),
+
+        
+        ...appCursosItems.map((curso)
+           => CursoTarjeta(
+            image: curso.image, title: curso.title, url: curso.url, porcent: curso.porcent
+            ),
+          )
+        
+
+      ],
+    );
+  }
+}
 

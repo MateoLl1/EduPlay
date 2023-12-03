@@ -25,10 +25,12 @@ class AppTheme {
     textTheme: TextTheme(
       //TITULOS
       titleLarge: GoogleFonts.chakraPetch().copyWith(fontSize: 30),
+      // SUBTITULOS
+      titleMedium: GoogleFonts.chakraPetch().copyWith(fontSize: 20),
       //PARRAFOS
       bodyMedium: GoogleFonts.chakraPetch(),
       //BOTONES
-      bodyLarge: GoogleFonts.chakraPetch(
+      labelLarge: GoogleFonts.chakraPetch(
         color: isDark ? Colors.black : Colors.white,
         fontWeight: FontWeight.w500
       )

@@ -27,7 +27,7 @@ class CustomButton extends StatelessWidget {
         )
       ),
       onPressed: onPressed,
-      child: Text(label,style:textStyle.bodyLarge), 
+      child: Text(label,style:textStyle.labelLarge), 
     );
   }
 }

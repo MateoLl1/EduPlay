@@ -28,7 +28,7 @@ class _MenuLateralState extends State<MenuLateral> {
       children: [
 
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.only(top: 10,left: 20),
           child: Text('EducaPlay',style: textStyle.titleLarge,),
         ),
         
