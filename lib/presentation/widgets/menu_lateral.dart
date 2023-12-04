@@ -2,14 +2,27 @@
 
 import 'package:flutter/material.dart';
 import 'package:games/presentation/widgets/widgets.dart';
+import 'package:go_router/go_router.dart';
 
 
 class MenuLateral extends StatefulWidget {
-  const MenuLateral({super.key});
+  const MenuLateral({
+    super.key, 
+    required this.scaffoldKey
+  });
+  final GlobalKey<ScaffoldState> scaffoldKey;
 
   @override
   State<MenuLateral> createState() => _MenuLateralState();
 }
+
+final rutas = [
+  '/perfil',
+  '/setting',
+  '/favorite',
+  '/completados',
+  '/tutorial',
+];
 
 int selectedIndex = 0;
 class _MenuLateralState extends State<MenuLateral> {
@@ -18,12 +31,15 @@ class _MenuLateralState extends State<MenuLateral> {
     final textStyle = Theme.of(context).textTheme;
     final colors = Theme.of(context).colorScheme;
     return NavigationDrawer(
+
       onDestinationSelected: (value) {
         selectedIndex = value;
         setState(() {
-          
         });
+        context.push(rutas[value]);
+        widget.scaffoldKey.currentState?.closeDrawer();
       },
+
       selectedIndex: selectedIndex,
       children: [
 
@@ -58,6 +74,11 @@ class _MenuLateralState extends State<MenuLateral> {
         const NavigationDrawerDestination(
           icon: Icon(Icons.verified), 
           label: Text('Cursos completados')
+        ),
+
+        const NavigationDrawerDestination(
+          icon: Icon(Icons.help), 
+          label: Text('Tutorial')
         ),
 
         Divider(color: colors.primary,endIndent: 30,indent: 30,),

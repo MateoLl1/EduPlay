@@ -32,7 +32,7 @@ class _ComercioExteriorScreenState extends State<ComercioExteriorScreen> {
         ],  
       ),
 
-    body: const Center(child: Text('No hice nada xq no ayudan cabro...'),),
+    body: const Center(child: Text('Sin cursos de momento'),),
     );
   }
 }

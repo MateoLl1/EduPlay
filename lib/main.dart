@@ -15,11 +15,12 @@ class MyApp extends ConsumerWidget {
   Widget build(BuildContext context,ref) {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     final isDark = ref.watch(darkThemeProvider);
+    final selectColor = ref.watch(selectColorProvider);
     return MaterialApp.router(
       routerConfig: appRouter,
       title: 'EduPlay',
       debugShowCheckedModeBanner: false,
-      theme: AppTheme(selectColor: 0,isDark: isDark).getTheme(),
+      theme: AppTheme(selectColor: selectColor,isDark: isDark).getTheme(),
     );
   }
 }

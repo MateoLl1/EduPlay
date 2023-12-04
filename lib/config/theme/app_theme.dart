@@ -2,11 +2,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-const List<Color> colors= [
+const List<Color> colorsList= [
   Colors.blue,
-  Colors.green,
   Colors.red,
+  Colors.green,
+  Colors.amberAccent,
 ];
+
 
 class AppTheme {
 
@@ -20,7 +22,8 @@ class AppTheme {
 
   ThemeData getTheme () => ThemeData(
     useMaterial3: true,
-    colorSchemeSeed: colors[selectColor],
+    colorSchemeSeed: colorsList[selectColor],
+    
     brightness: isDark ? Brightness.dark : Brightness.light,
     textTheme: TextTheme(
       //TITULOS
@@ -29,11 +32,21 @@ class AppTheme {
       titleMedium: GoogleFonts.chakraPetch().copyWith(fontSize: 20),
       //PARRAFOS
       bodyMedium: GoogleFonts.chakraPetch(),
+      //Validacion
+      bodySmall: GoogleFonts.chakraPetch().copyWith(),
+
+      // PROXIMAMENTE
+      labelMedium: GoogleFonts.chakraPetch().copyWith(
+        backgroundColor: Colors.black45,
+        fontSize: 30
+      ),
       //BOTONES
       labelLarge: GoogleFonts.chakraPetch(
         color: isDark ? Colors.black : Colors.white,
         fontWeight: FontWeight.w500
       )
+
+
     )
   );
 

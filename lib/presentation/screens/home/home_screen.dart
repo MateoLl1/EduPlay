@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:games/config/config.dart';
-import 'package:games/presentation/providers/providers.dart';
 import 'package:games/presentation/widgets/widgets.dart';
+import 'package:go_router/go_router.dart';
 
 
 
@@ -11,22 +11,21 @@ class HomeScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context,ref) {
-    final isDarkProvider = ref.watch(darkThemeProvider);
+    final scaffoldKey = GlobalKey<ScaffoldState>();
     return Scaffold(
+      key: scaffoldKey,
       appBar: AppBar(
         title: const Center(child:Text('EducaPlay')),
         actions: [
           IconButton(
-            icon: isDarkProvider
-            ? const Icon(Icons.dark_mode_outlined)
-            : const Icon(Icons.light_mode_outlined),
+            icon: const Icon(Icons.settings),
             onPressed: (){
-              ref.read(darkThemeProvider.notifier).update((state) => !state);
+              context.push('/setting');
             }, 
           )
         ],
       ),
-      drawer: const MenuLateral(),
+      drawer: MenuLateral(scaffoldKey: scaffoldKey),
       body: const SingleChildScrollView(child: _HomeView()),
     );
   }
@@ -50,6 +49,10 @@ class _HomeView extends StatelessWidget {
           SizedBox(height: 20),
 
           _CursosListView(),
+
+          ProxiTarjeta(),
+
+          SizedBox(height: 30)
 
         ],
       ),

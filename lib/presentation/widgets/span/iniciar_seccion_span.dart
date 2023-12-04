@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 
 class IniciarSeccionSpan extends StatelessWidget {
@@ -25,8 +26,10 @@ class IniciarSeccionSpan extends StatelessWidget {
       const SizedBox(height: 10),
       
       OutlinedButton(
-        onPressed: (){}, 
-        child: const Text('Iniciar Session')
+        child: const Text('Iniciar Session'),
+        onPressed: (){
+          context.push('/perfil');
+        }, 
       ),
 
       ]
