@@ -72,7 +72,7 @@ class _LoginFormViewState extends State<_LoginFormView> {
             CustomTextField(
               focusNode: _focusNode1,
               label: 'Correo electronico',
-              icon: Icons.abc_outlined,
+              icon: Icons.person,
               hintTxt: 'ejemplo@gmail.com',
               onChanged: (value) {
                 formKey.currentState!.validate();
@@ -94,7 +94,7 @@ class _LoginFormViewState extends State<_LoginFormView> {
               focusNode: _focusNode2,
               obscureText: true,
               label: 'Contraseña',
-              icon: Icons.abc_outlined,
+              icon: Icons.key,
               onChanged: (value) {
                 formKey.currentState!.validate();
               },
