@@ -14,19 +14,34 @@ class HomeScreen extends ConsumerWidget {
     final scaffoldKey = GlobalKey<ScaffoldState>();
     return Scaffold(
       key: scaffoldKey,
-      appBar: AppBar(
-        title: const Center(child:Text('EducaPlay')),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.settings),
-            onPressed: (){
-              context.push('/setting');
-            }, 
+      drawer: MenuLateral(scaffoldKey: scaffoldKey),
+      body: CustomScrollView(
+        slivers: [
+
+          SliverAppBar(
+            floating: true,
+            centerTitle: true,
+            title: const Text('EducaPlay'),
+            actions: [
+              IconButton(
+                icon: const Icon(Icons.settings),
+                onPressed: (){
+                  context.push('/setting');
+                }, 
+              )
+            ],
+          ),
+
+
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              childCount: 1,
+              (context, index) => const _HomeView()
+            )
           )
+
         ],
       ),
-      drawer: MenuLateral(scaffoldKey: scaffoldKey),
-      body: const SingleChildScrollView(child: _HomeView()),
     );
   }
 }
@@ -50,6 +65,8 @@ class _HomeView extends StatelessWidget {
 
           _CursosListView(),
 
+          SizedBox(height: 20),
+          
           ProxiTarjeta(),
 
           SizedBox(height: 30)
@@ -78,10 +95,13 @@ class _CursosListView extends StatelessWidget {
 
         
         ...appCursosItems.map((curso)
-           => CursoTarjeta(
-            image: curso.image, title: curso.title, url: curso.url, porcent: curso.porcent
-            ),
-          )
+           => Padding(
+             padding: const EdgeInsets.symmetric(horizontal: 20),
+             child: CursoTarjeta(
+                curso: curso,
+              ),
+           ),
+        )
         
 
       ],

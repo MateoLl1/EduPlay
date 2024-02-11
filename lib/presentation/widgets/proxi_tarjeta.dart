@@ -8,25 +8,30 @@ class ProxiTarjeta extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     final textStyle = Theme.of(context).textTheme;
     return ClipRRect(
-      borderRadius: BorderRadius.circular(40),
-      child: Card(
-        elevation: 10,
+      borderRadius: BorderRadius.circular(20),
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 40),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: Colors.black,
+        ),
         child: Stack(
+          alignment: Alignment.center,
           children: [
 
 
-            Image.asset(
-              'assets/img/proximamente.jpg',
-              height: size.height * 0.3,
-              width: double.infinity,
-              fit: BoxFit.cover,
+            ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Image.asset(
+                'assets/img/proximamente.jpg',
+                width: size.width,
+                height: 100,
+                fit: BoxFit.cover,
+              ),
             ),
 
 
             Positioned(
-              top: size.height * 0.12,
-              left: 0,
-              right: 0,
               child: Center(
                 child: Text(
                   "Pronto más cursos",

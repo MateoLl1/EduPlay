@@ -1,67 +1,67 @@
 import 'package:flutter/material.dart';
+import 'package:games/config/config.dart';
 import 'package:go_router/go_router.dart';
 
 class CursoTarjeta extends StatelessWidget {
-  final String image;
-  final String title;
-  final String url;
-  final double porcent;
-
+  final CursoItem curso;
   const CursoTarjeta({
     super.key,
-    required this.image,
-    required this.title,
-    required this.url,
-    required this.porcent
+    required this.curso,
   });
 
   @override
   Widget build(BuildContext context) {
-    final textStyle = Theme.of(context).textTheme;
     final size = MediaQuery.of(context).size;
-    return InkWell(
-      borderRadius: BorderRadius.circular(20),
-      onTap: (){
-        context.push(url);
-      },
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: size.width * 0.08),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(20),
-          child: Card(
-            margin: const EdgeInsets.only(bottom: 30),
-            elevation: 7,
-            child: Column(
+    final textStyle = Theme.of(context).textTheme;
+    return GestureDetector(
+      onTap: () => context.push(curso.url),
+      child: Container(
+        margin: const EdgeInsets.symmetric(vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+        width: size.width,
+        decoration: BoxDecoration(
+          color: curso.color,
+          borderRadius: BorderRadius.circular(10)
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+      
+            Row(
               children: [
-          
-                
-                Image.asset(
-                  image,
-                  height: 290,
-                  width: double.infinity,
-                  fit: BoxFit.fitHeight,
-                ),
-                
-                
+      
                 SizedBox(
-                  width: double.infinity,
-                  child: Row(
-                    // alignment: (size.width>300)
-                    // ? WrapAlignment.spaceBetween
-                    // : WrapAlignment.center,
+                  width: size.width*.4,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(title, style: textStyle.titleMedium),
-                      const Spacer(),
-                      Text('${(porcent*100).toInt()}%', style: textStyle.titleMedium),
+                      Text(curso.title,style: textStyle.titleMedium,),
+                      Text(curso.caption,style: textStyle.bodyMedium,),
                     ],
                   ),
                 ),
-          
-          
-                LinearProgressIndicator(value: porcent),
+                const Spacer(),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Image(
+                    image: AssetImage(curso.image),
+                    fit: BoxFit.cover,
+                    width: 150,
+                    height: 120,
+                  ),
+                ),
+      
               ],
             ),
-          ),
+          
+      
+            Column(
+              children: [
+                Text('${(curso.porcent* 100).round()} %'),
+                LinearProgressIndicator(value: curso.porcent,),
+              ],
+            )
+          ],
         ),
       ),
     );
