@@ -43,6 +43,15 @@ final appRouter = GoRouter(
     GoRoute(
       path: '/software',
       builder: (context, state) => const SoftwareScreen(),
+      routes: [
+        GoRoute(
+          path: 'curso/:id',
+          builder: (context, state) {
+            final id = state.pathParameters['id'] ?? '0';
+            return CursoScreen(id: id);
+          },
+        )
+      ]
     ),
   ]
 );
