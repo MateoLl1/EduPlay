@@ -10,3 +10,4 @@ export './login/login_screen.dart';
 export './painters/login_painter.dart';
 export './tutorial/tutorial_screen.dart';
 export 'cursos/software/curso_screen.dart';
+export './cursos/software/games/games.dart';

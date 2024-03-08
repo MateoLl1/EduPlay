@@ -14,7 +14,7 @@ class MyApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context,ref) {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-    final isDark = MediaQuery.of(context).platformBrightness == Brightness.dark;
+    final isDark = ref.watch(darkThemeProvider);
     final selectColor = ref.watch(selectColorProvider);
     return MaterialApp.router(
       routerConfig: appRouter,

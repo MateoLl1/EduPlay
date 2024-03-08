@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:games/domain/domain.dart';
+import 'package:games/presentation/providers/providers.dart';
+import 'package:go_router/go_router.dart';
 
 class CursoScreen extends StatelessWidget {
   final String id;
@@ -47,14 +50,14 @@ class _CursoListView extends StatelessWidget {
           title:  Text(tema.title),
           subtitle:  Text(tema.caption),
           trailing: const Icon(Icons.arrow_forward_ios),
-          onTap: (){},
+          onTap: () => context.push(tema.url ?? '/nohay'),
         ),
       ],
     );
   }
 }
 
-class CustomSoftwareAppbar extends StatelessWidget {
+class CustomSoftwareAppbar extends ConsumerWidget {
   final String title;
   final String image;
   const CustomSoftwareAppbar({
@@ -64,7 +67,7 @@ class CustomSoftwareAppbar extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context,ref) {
     final textStyle = Theme.of(context).textTheme;
     final size = MediaQuery.of(context).size;
     return SliverAppBar(
@@ -76,11 +79,11 @@ class CustomSoftwareAppbar extends StatelessWidget {
             Image.network(
               image,
               width: double.infinity,
-              height: size.height*.25,
+              height: double.infinity,
               fit: BoxFit.cover,
             ),
 
-            Container(color: Colors.black26,),
+            Container(color:  Colors.black26,),
 
             Positioned(
               bottom: 20,
@@ -89,8 +92,13 @@ class CustomSoftwareAppbar extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Desarrollo de software',style: textStyle.bodyLarge,),
-                    Text(title,style: textStyle.titleLarge,)
+                    Text(
+                      'Desarrollo de software',
+                      style: textStyle.bodyLarge?.copyWith(
+                        color: Colors.white 
+                      ),
+                    ),
+                    Text(title,style: textStyle.titleLarge?.copyWith(color: Colors.white),)
                   ],
                 ),
               )

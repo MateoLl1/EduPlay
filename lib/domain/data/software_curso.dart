@@ -12,6 +12,7 @@ final appSoftwareItem = <SoftwareItem>[
           id: 0, 
           title: 'Condicionales', 
           caption: 'Fundamentos de programacion', 
+          url: '/fundamentos-programacion',
           image: 'https://th.bing.com/th/id/R.60e3c7f1428493b0bae33a47faf195d4?rik=o9aV2Z%2bnkulaxA&riu=http%3a%2f%2fblog.cambridge.es%2fwp-content%2fuploads%2f2018%2f10%2fcondicionales-ingles.jpg&ehk=YTGeEiCh2NP5%2bh0SdJBGoK7cU4mHsbDHec4GtvtzcCA%3d&risl=&pid=ImgRaw&r=0'
         ),
         SoftwareTema(

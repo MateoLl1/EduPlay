@@ -27,11 +27,17 @@ class AppTheme {
     brightness: isDark ? Brightness.dark : Brightness.light,
     textTheme: TextTheme(
       //TITULOS
-      titleLarge: GoogleFonts.chakraPetch().copyWith(fontSize: 30),
+      titleLarge: GoogleFonts.chakraPetch()
+       .copyWith(
+        fontSize: 30,
+      ),
       // SUBTITULOS
       titleMedium: GoogleFonts.chakraPetch().copyWith(fontSize: 20),
       //PARRAFOS
       bodyMedium: GoogleFonts.chakraPetch(),
+      
+      bodyLarge: GoogleFonts.chakraPetch().copyWith(
+      ),
       //Validacion
       bodySmall: GoogleFonts.chakraPetch().copyWith(),
 
