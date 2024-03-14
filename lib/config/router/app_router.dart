@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:games/presentation/screens/screens.dart';
 
 final appRouter = GoRouter(
-  initialLocation: '/fundamentos-programacion',
+  initialLocation: '/',
   routes: [
     GoRoute(
       path: '/',
@@ -43,28 +43,28 @@ final appRouter = GoRouter(
     GoRoute(
       path: '/software',
       builder: (context, state) => const SoftwareScreen(),
-      routes: [
-        GoRoute(
-          path: 'curso/:id',
-          builder: (context, state) {
-            final id = state.pathParameters['id'] ?? '0';
-            return CursoScreen(id: id);
-          },
-        )
-      ]
-    ),
-
-    //! JUEGOS 
-
-    GoRoute(
-      path: '/fundamentos-programacion',
-      builder: (context, state) => const FundamentosProgramacionScreen(),
     ),
 
     GoRoute(
-      path: '/game-fun-pro',
-      builder: (context, state) => const GameFunPro(),
+      path: '/introduction-program',
+      builder: (context, state) => const IntroduccionProScreen(),
     ),
+    GoRoute(
+      path: '/algoritmos-datos',
+      builder: (context, state) => const AlgoritmosEstScreen(),
+    ),
+    GoRoute(
+      path: '/desarrollo-web',
+      builder: (context, state) => const DesarrolloWebScreen(),
+    ),
+
+
+    //! JUEGOS
+    GoRoute(
+      path: '/uno',
+      builder: (context, state) => const JuegoUno(),
+    ),
+    
 
 
     

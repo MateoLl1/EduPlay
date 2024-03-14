@@ -9,5 +9,4 @@ export './perfil/perfil_screen.dart';
 export './login/login_screen.dart';
 export './painters/login_painter.dart';
 export './tutorial/tutorial_screen.dart';
-export 'cursos/software/curso_screen.dart';
-export './cursos/software/games/games.dart';
+export './cursos/software/signature/signature.dart';

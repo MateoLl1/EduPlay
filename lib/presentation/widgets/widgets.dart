@@ -7,3 +7,6 @@ export './proxi_tarjeta.dart';
 export './custom_text_field.dart';
 export './icons/icon_image_web.dart';
 export './cards/respuesta_card.dart';
+export './appbar/curso_app_bar.dart';
+export './text/custom_title.dart';
+export './text/my_parrafo.dart';

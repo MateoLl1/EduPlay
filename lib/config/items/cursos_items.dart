@@ -29,14 +29,6 @@ const appCursosItems = <CursoItem>[
     url: '/software',
     color: Colors.blue
   ),
-  CursoItem(
-    image: 'assets/img/comercio-exterior.jpg', 
-    title: 'Comercio exterior', 
-    caption: 'Algo vital y muy necesario en todo el mundo', 
-    url: '/comercio-exterior',
-    porcent: 0.1,
-    color: Colors.green
-  ),
   
 
 ];

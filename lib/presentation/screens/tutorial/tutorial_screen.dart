@@ -87,7 +87,7 @@ class _TutorialAppState extends State<TutorialApp> {
             right: 20,
             child: TextButton(
               child: const Text('Salir'),
-              onPressed: () => context.pop(),
+              onPressed: () => context.go('/'),
             ),
           ),
 
@@ -99,7 +99,7 @@ class _TutorialAppState extends State<TutorialApp> {
               from: 30,
               child: FilledButton(
                 child: const Text('Comenzar'),
-                onPressed: () => context.pop(), 
+                onPressed: () => context.go('/'), 
               ),
             )
           ): const SizedBox()
